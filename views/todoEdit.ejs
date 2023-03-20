@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+<title>Todo App</title>
+<link rel="stylesheet" href="/css/style.css" type="text/css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,300&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div class="todo-container">
+<h2 class="head-font">The Todo App</h2>
+<div class="todo">
+<form action="" method="POST" class="header">
+<input type="text" name="content"  placeholder="ENTER YOUR TODO NOW !!!">
+<button type="submit" class="add-button">ADD</button>
+</form>
+<ul class="todo-list">
+<% todo.forEach(data => { %>
+<% if (data._id == todoId) { %>
+<li class="todo-list-item">
+<form action="/edit/<%= data._id %>" method="POST">
+<input type="text" value="<%= data.text %>" name="content">
+<button type="submit" class="confirm">CONFIRM</button>
+<a href="/" class="cancel"><button>CANCEL</button></a>
+</form>
+</li>
+<% } else { %>
+<li class="todo-list-item">
+<div class="todo-list-item-name"><%= data.text %></div>
+<a href="/edit/<%= data._id %>" class="edit">EDIT
+</a>
+<a href="/remove/<%= data._id %>" class="remove">REMOVE
+</a>
+</li>
+<% } %>
+<% }) %>
+</ul>
+</div>
+</body>
+</html>
